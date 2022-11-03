@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 7e541c99b7fc6ed448ebc6d41f0a6c26
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Orator Std
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c57a5393c93e64c4baae80d1960063d9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
