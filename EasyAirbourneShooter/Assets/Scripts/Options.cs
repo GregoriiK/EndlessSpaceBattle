@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class Options : MonoBehaviour
 {
     float currentMultiplier;
+    float currentMainVolume;
+    float currentMusicVolume;
+    float currentSfxVolume;
+
     [SerializeField] GameObject pointer;
 
     [Header("Volume Control")]
@@ -17,15 +21,31 @@ public class Options : MonoBehaviour
     void Start()
     {
         currentMultiplier = Difficulty.multiplier;
+
+        currentMusicVolume = AudioPlayer.FindObjectOfType<AudioSource>().volume;
+        musicVolume.value = currentMusicVolume;
+        mainVolume.value = AudioPlayer.mainVolume;
+        sfxVolume.value = AudioPlayer.sfxVolumeControl;
+        currentMainVolume = mainVolume.value;
+        currentSfxVolume = sfxVolume.value;
+
         rectTransform = pointer.GetComponent<RectTransform>();
     }
 
     private void Update()
     {
         SetPointerPosition();
+        SetAudioVolume();
     }
 
-    public void SetPointerPosition()
+    void SetAudioVolume()
+    {
+        AudioPlayer.sfxVolumeControl = sfxVolume.value;
+        AudioPlayer.mainVolume = mainVolume.value;
+        AudioPlayer.FindObjectOfType<AudioSource>().volume = musicVolume.value * mainVolume.value;
+    }
+
+    void SetPointerPosition()
     {
         if (Difficulty.multiplier == 1)
         {
@@ -50,5 +70,10 @@ public class Options : MonoBehaviour
     public void OnCancel()
     {
         Difficulty.multiplier = currentMultiplier;
+        AudioPlayer.sfxVolumeControl = currentSfxVolume;
+        sfxVolume.value = currentSfxVolume;
+        mainVolume.value = currentMainVolume;
+        musicVolume.value = currentMusicVolume;
+        AudioPlayer.FindObjectOfType<AudioSource>().volume = currentMusicVolume;
     }
 }

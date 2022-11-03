@@ -16,6 +16,9 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] AudioClip destroyClip;
     [SerializeField] [Range(0f, 1f)] float destroyVolume = 1f;
 
+    static public float sfxVolumeControl;
+    static public float mainVolume;
+
     static AudioPlayer instance;
 
     private void Awake()
@@ -56,7 +59,7 @@ public class AudioPlayer : MonoBehaviour
     {
         if (audioClip != null)
         {
-            AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, volume);
+            AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, volume * sfxVolumeControl * mainVolume);
         }
     }
 }
