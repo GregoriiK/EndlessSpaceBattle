@@ -15,7 +15,7 @@ public class Options : MonoBehaviour
     [Header("Volume Control")]
     [SerializeField] Slider mainVolume;
     [SerializeField] Slider musicVolume;
-    [SerializeField] Slider sfxVolume;
+    [SerializeField] public Slider sfxVolume;
 
     RectTransform rectTransform;
     void Start()

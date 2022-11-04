@@ -16,8 +16,8 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] AudioClip destroyClip;
     [SerializeField] [Range(0f, 1f)] float destroyVolume = 1f;
 
-    static public float sfxVolumeControl;
-    static public float mainVolume;
+    static public float sfxVolumeControl = 1f;
+    static public float mainVolume = 1f;
 
     static AudioPlayer instance;
 
