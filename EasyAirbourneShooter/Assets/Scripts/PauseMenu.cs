@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     
     float tempShakeMagnitude;
     float tempSfxVolume;
+    bool isMouseControled;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class PauseMenu : MonoBehaviour
         cameraShake = FindObjectOfType<CameraShake>();
         tempSfxVolume = AudioPlayer.sfxVolumeControl;
         tempShakeMagnitude = cameraShake.shakeMagnitude;
+        isMouseControled = PlayerMovement.followMouse;
     }
 
     public void PauseGame()
@@ -31,6 +33,10 @@ public class PauseMenu : MonoBehaviour
         AudioPlayer.sfxVolumeControl = 0f;
         pauseMenu.SetActive(true);
         pauseButton.interactable = false;
+        if (isMouseControled)
+        {
+            PlayerMovement.followMouse = false;
+        }
     }
 
     public void ResumeGame()
@@ -40,6 +46,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         cameraShake.shakeMagnitude = tempShakeMagnitude;
         AudioPlayer.sfxVolumeControl = tempSfxVolume;
+        if (isMouseControled)
+        {
+            PlayerMovement.followMouse = true;
+        }
     }
 
     public void ReturnToMainMenu()
@@ -63,6 +73,10 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 1;
             AudioPlayer.sfxVolumeControl = tempSfxVolume;
             levelManager.LoadMainMenu();
+            if (isMouseControled)
+            {
+                PlayerMovement.followMouse = true;
+            }
         }
         else
         {

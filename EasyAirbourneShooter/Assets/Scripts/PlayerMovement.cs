@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float screenPaddingTop = 1f;
     [SerializeField] float screenPaddingBottom = 1f;
 
+    public static bool followMouse = false;
+
     private void Awake()
     {
         gun = GetComponent<Gun>();
@@ -47,20 +49,45 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveTransform()
     {
-        Vector2 delta = moveInput * defaultSpeed * Time.deltaTime;
-        Vector2 newPosition = new Vector2();
-        newPosition.x = Mathf.Clamp(transform.position.x + delta.x, minBounds.x + screenPaddingH, maxBounds.x - screenPaddingH);
-        newPosition.y = Mathf.Clamp(transform.position.y + delta.y, minBounds.y + screenPaddingBottom, maxBounds.y - screenPaddingTop);
-        if (Mathf.Abs(moveInput.x) < Mathf.Epsilon)
+        if (followMouse)
         {
-            myAnimator.SetBool("SideMoveOn", false);
+            var delta = defaultSpeed * Time.deltaTime;
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0f;
+            mousePosition.x = Mathf.Clamp(mousePosition.x, minBounds.x + screenPaddingH, maxBounds.x - screenPaddingH);
+            mousePosition.y = Mathf.Clamp(mousePosition.y, minBounds.y + screenPaddingBottom, maxBounds.y - screenPaddingTop);
+            transform.position = Vector2.MoveTowards(transform.position, mousePosition, delta);
+            if (mousePosition.x == transform.position.x)
+            {
+                myAnimator.SetBool("SideMoveOn", false);
+            }
+            else
+            {
+                myAnimator.SetBool("SideMoveOn", true);
+                transform.localScale = new Vector2(
+                    Mathf.Sign(mousePosition.x - transform.position.x), 
+                    1f);
+                
+            }
         }
         else
         {
-            myAnimator.SetBool("SideMoveOn", true);
-            transform.localScale = new Vector2(Mathf.Sign(moveInput.x) , 1f);
+            Vector2 delta = moveInput * defaultSpeed * Time.deltaTime;
+            Vector2 newPosition = new Vector2();
+            newPosition.x = Mathf.Clamp(transform.position.x + delta.x, minBounds.x + screenPaddingH, maxBounds.x - screenPaddingH);
+            newPosition.y = Mathf.Clamp(transform.position.y + delta.y, minBounds.y + screenPaddingBottom, maxBounds.y - screenPaddingTop);
+            if (Mathf.Abs(moveInput.x) < Mathf.Epsilon)
+            {
+                myAnimator.SetBool("SideMoveOn", false);
+            }
+            else
+            {
+                myAnimator.SetBool("SideMoveOn", true);
+                transform.localScale = new Vector2(Mathf.Sign(moveInput.x) , 1f);
+            }
+            transform.position = newPosition;
+
         }
-        transform.position = newPosition;
     }
 
     void OnFire(InputValue value)

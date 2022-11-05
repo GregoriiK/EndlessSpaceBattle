@@ -9,6 +9,7 @@ public class Options : MonoBehaviour
     float currentMainVolume;
     float currentMusicVolume;
     float currentSfxVolume;
+    bool currentMouseControlState;
 
     [SerializeField] GameObject pointer;
 
@@ -16,6 +17,7 @@ public class Options : MonoBehaviour
     [SerializeField] Slider mainVolume;
     [SerializeField] Slider musicVolume;
     [SerializeField] public Slider sfxVolume;
+    [SerializeField] Toggle mouseControl;
 
     RectTransform rectTransform;
     void Start()
@@ -29,6 +31,9 @@ public class Options : MonoBehaviour
         currentMainVolume = mainVolume.value;
         currentSfxVolume = sfxVolume.value;
 
+        currentMouseControlState = PlayerMovement.followMouse;
+        mouseControl.isOn = PlayerMovement.followMouse;
+
         rectTransform = pointer.GetComponent<RectTransform>();
     }
 
@@ -36,6 +41,11 @@ public class Options : MonoBehaviour
     {
         SetPointerPosition();
         SetAudioVolume();
+    }
+
+    public void SetMouseControl()
+    {
+        PlayerMovement.followMouse = mouseControl.isOn;
     }
 
     void SetAudioVolume()
@@ -75,5 +85,7 @@ public class Options : MonoBehaviour
         mainVolume.value = currentMainVolume;
         musicVolume.value = currentMusicVolume;
         AudioPlayer.FindObjectOfType<AudioSource>().volume = currentMusicVolume;
+        mouseControl.isOn = currentMouseControlState;
+        PlayerMovement.followMouse = currentMouseControlState;
     }
 }
