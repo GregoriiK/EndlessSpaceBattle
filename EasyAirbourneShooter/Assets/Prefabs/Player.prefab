@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2140967212}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 949890439
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 1089894019, guid: 366f2ea7db8099b4cb90556f725611b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -236,8 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4447b93c877d7419dfb1f461ed53ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  applyCameraShake: 1
   health: 100
   hitEffect: {fileID: 5619571414222163732, guid: 3b5f78fcdc2beb64f97c62be64140b74, type: 3}
+  scoreAmount: 50
+  rocketPickUp: {fileID: 0}
 --- !u!114 &2140967212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2250846380066069728, guid: 7984c2995daaecd43be405f6d21461b0, type: 3}
+  rocketPrefab: {fileID: 2752146134984722077, guid: a307ce03d6173054e8306b77ceaf5d62, type: 3}
   projectileVelocity: 20
   projectileLifespan: 3
   baseFiringRate: 0.1
@@ -258,6 +262,7 @@ MonoBehaviour:
   fireRateVariance: 0
   minFireRate: 0.1
   isFiring: 0
+  rocketsStacked: 0
 --- !u!1 &8976100362545357081
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +355,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 949890439
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1576447607, guid: 366f2ea7db8099b4cb90556f725611b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -26,6 +26,14 @@ public class PauseMenu : MonoBehaviour
         isMouseControled = PlayerMovement.followMouse;
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            PauseGame();
+        }
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0;

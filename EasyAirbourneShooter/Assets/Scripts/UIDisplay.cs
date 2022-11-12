@@ -9,12 +9,15 @@ public class UIDisplay : MonoBehaviour
     [SerializeField] Health health;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] Slider healthBar;
+    [SerializeField] TextMeshProUGUI rocketsCount;
     ScoreKeeper scoreKeeper;
+    Gun gun;
 
     private void Awake()
     {
         health = FindObjectOfType<Health>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        gun = FindObjectOfType<Gun>();
     }
 
     private void Start()
@@ -25,5 +28,6 @@ public class UIDisplay : MonoBehaviour
     {
         scoreText.text = scoreKeeper.GetCurrentScore().ToString("000000000");
         healthBar.value = health.GetCurrentHealth();
+        rocketsCount.text = gun.GetCurrentRocketsCout().ToString("00");
     }
 }

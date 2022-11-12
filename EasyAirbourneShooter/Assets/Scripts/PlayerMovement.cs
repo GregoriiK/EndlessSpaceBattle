@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float screenPaddingH = 1f;
     [SerializeField] float screenPaddingTop = 1f;
     [SerializeField] float screenPaddingBottom = 1f;
-
+    
     public static bool followMouse = false;
 
     private void Awake()
@@ -95,6 +95,14 @@ public class PlayerMovement : MonoBehaviour
         if(gun != null)
         {
             gun.isFiring = value.isPressed;
+        }
+    }
+
+    void OnSecondaryFire()
+    {
+        if (gun != null && !Rocket.rocketDeployed)
+        {
+            gun.ShootRocket();
         }
     }
 }

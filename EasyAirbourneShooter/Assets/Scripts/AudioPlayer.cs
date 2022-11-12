@@ -16,6 +16,10 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] AudioClip destroyClip;
     [SerializeField] [Range(0f, 1f)] float destroyVolume = 1f;
 
+    [Header("PickUp")]
+    [SerializeField] AudioClip collectClip;
+    [SerializeField] [Range(0f, 1f)] float collectVolume = 1f;
+
     static public float sfxVolumeControl = 1f;
     static public float mainVolume = 1f;
 
@@ -53,6 +57,11 @@ public class AudioPlayer : MonoBehaviour
     public void playDestroyClip()
     {
         PlayClip(destroyClip, destroyVolume);
+    }
+
+    public void playCollectClip()
+    {
+        PlayClip(collectClip, collectVolume);
     }
 
     void PlayClip(AudioClip audioClip, float volume)

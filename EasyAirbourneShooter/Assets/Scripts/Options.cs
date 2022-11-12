@@ -17,14 +17,18 @@ public class Options : MonoBehaviour
     [SerializeField] Slider mainVolume;
     [SerializeField] Slider musicVolume;
     [SerializeField] public Slider sfxVolume;
+
+    [Header("Other Controls")]
     [SerializeField] Toggle mouseControl;
+    [SerializeField] GameObject instructions;
 
     RectTransform rectTransform;
     void Start()
     {
         currentMultiplier = Difficulty.multiplier;
+        instructions.SetActive(false);
 
-        currentMusicVolume = AudioPlayer.FindObjectOfType<AudioSource>().volume;
+        currentMusicVolume = FindObjectOfType<AudioSource>().volume;
         musicVolume.value = currentMusicVolume;
         mainVolume.value = AudioPlayer.mainVolume;
         sfxVolume.value = AudioPlayer.sfxVolumeControl;
@@ -52,7 +56,7 @@ public class Options : MonoBehaviour
     {
         AudioPlayer.sfxVolumeControl = sfxVolume.value;
         AudioPlayer.mainVolume = mainVolume.value;
-        AudioPlayer.FindObjectOfType<AudioSource>().volume = musicVolume.value * mainVolume.value;
+        FindObjectOfType<AudioSource>().volume = musicVolume.value * mainVolume.value;
     }
 
     void SetPointerPosition()
@@ -84,8 +88,18 @@ public class Options : MonoBehaviour
         sfxVolume.value = currentSfxVolume;
         mainVolume.value = currentMainVolume;
         musicVolume.value = currentMusicVolume;
-        AudioPlayer.FindObjectOfType<AudioSource>().volume = currentMusicVolume;
+        FindObjectOfType<AudioSource>().volume = currentMusicVolume;
         mouseControl.isOn = currentMouseControlState;
         PlayerMovement.followMouse = currentMouseControlState;
+    }
+
+    public void ShowInstructions()
+    {
+        instructions.SetActive(true);
+    }
+
+    public void HideInstructions()
+    {
+        instructions.SetActive(false);
     }
 }

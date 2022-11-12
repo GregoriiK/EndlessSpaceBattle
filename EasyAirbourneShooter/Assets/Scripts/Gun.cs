@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] GameObject projectilePrefab;
+    [SerializeField] GameObject rocketPrefab;
     [SerializeField] public float projectileVelocity = 20f;
     [SerializeField] float projectileLifespan = 3f;
     [SerializeField] float baseFiringRate = 0.3f;
@@ -16,19 +17,21 @@ public class Gun : MonoBehaviour
     [SerializeField] float minFireRate = 0.1f;
 
     [HideInInspector] public bool isFiring;
-    float alternateFire = 0.3f;
-    AudioPlayer audioPlayer;
-    //Difficulty difficulty;
+    [HideInInspector] public bool shootingSecondary;
 
+    AudioPlayer audioPlayer;
     Coroutine fireCoroutine;
+
+    float alternateFire = 0.3f;
+    public int rocketsStacked = 0;
 
     private void Awake()
     {
         audioPlayer = FindObjectOfType<AudioPlayer>();
-        //difficulty = FindObjectOfType<Difficulty>();
     }
     private void Start()
     {
+        rocketsStacked = 1;
         if (useAI)
         {
             isFiring = true;
@@ -79,5 +82,19 @@ public class Gun : MonoBehaviour
             timeToNextProjectile = Mathf.Clamp(timeToNextProjectile, minFireRate, float.MaxValue);
             yield return new WaitForSeconds(timeToNextProjectile);
         }
+    }
+
+    public void ShootRocket()
+    {
+        if (rocketsStacked >= 1)
+        {
+            GameObject instance = Instantiate(rocketPrefab, transform.position, Quaternion.identity);
+            rocketsStacked--;
+        }
+    }
+
+    public int GetCurrentRocketsCout()
+    {
+        return rocketsStacked;
     }
 }
