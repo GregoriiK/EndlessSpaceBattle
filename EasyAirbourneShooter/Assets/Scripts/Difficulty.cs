@@ -8,7 +8,7 @@ public class Difficulty : MonoBehaviour
 
     public void Easy()
     {
-        multiplier = 0.75f;
+        multiplier = 0.9f;
     }
 
     public void Medium()
@@ -18,7 +18,7 @@ public class Difficulty : MonoBehaviour
 
     public void Hard()
     {
-        multiplier = 1.25f;
+        multiplier = 1.1f;
     }
 
 }

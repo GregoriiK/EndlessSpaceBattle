@@ -31,7 +31,7 @@ public class Gun : MonoBehaviour
     }
     private void Start()
     {
-        rocketsStacked = 1;
+        rocketsStacked = 0;
         if (useAI)
         {
             isFiring = true;

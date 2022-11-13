@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5902798034218717849}
   - component: {fileID: 5902798034218717831}
+  - component: {fileID: 2179051198756814165}
   - component: {fileID: 5902798034218717829}
   - component: {fileID: 8233135292809501772}
   - component: {fileID: 7936704738942957663}
   - component: {fileID: -3272283461489781796}
   - component: {fileID: 724679748229507957}
-  - component: {fileID: 2179051198756814165}
   m_Layer: 7
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -91,6 +91,64 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &2179051198756814165
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5902798034218717826}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.81, y: 0.9}
+    newSize: {x: 0.95, y: 1.02}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.385, y: -0.39}
+      - {x: 0.405, y: -0.375}
+      - {x: 0.405, y: -0.35}
+      - {x: 0.39, y: -0.325}
+      - {x: 0.24, y: -0.105}
+      - {x: 0.205, y: -0.06}
+      - {x: 0.185, y: -0.06}
+      - {x: 0.185, y: 0.21499999}
+      - {x: 0.205, y: 0.22999999}
+      - {x: 0.22, y: 0.275}
+      - {x: 0.145, y: 0.405}
+      - {x: 0.114999995, y: 0.45}
+      - {x: -0.12, y: 0.45}
+      - {x: -0.17999999, y: 0.345}
+      - {x: -0.21499999, y: 0.275}
+      - {x: -0.21499999, y: 0.265}
+      - {x: -0.19999999, y: 0.22999999}
+      - {x: -0.185, y: 0.21499999}
+      - {x: -0.185, y: -0.06}
+      - {x: -0.21, y: -0.06}
+      - {x: -0.235, y: -0.085}
+      - {x: -0.405, y: -0.35}
+      - {x: -0.405, y: -0.375}
+      - {x: -0.39499998, y: -0.385}
+      - {x: -0.35999998, y: -0.39999998}
+      - {x: -0.35999998, y: -0.42999998}
+      - {x: -0.35, y: -0.44}
+      - {x: -0.25, y: -0.44}
+      - {x: -0.22999999, y: -0.45}
+      - {x: 0.22999999, y: -0.45}
+      - {x: 0.25, y: -0.44}
+      - {x: 0.35, y: -0.44}
+      - {x: 0.35999998, y: -0.42999998}
 --- !u!50 &5902798034218717829
 Rigidbody2D:
   serializedVersion: 4
@@ -171,70 +229,13 @@ MonoBehaviour:
   rocketPrefab: {fileID: 0}
   projectileVelocity: 15
   projectileLifespan: 3
-  baseFiringRate: 0
+  baseFiringRate: 10
   useAI: 1
   fireRateVariance: 0.5
-  minFireRate: 0.1
+  minFireRate: 10
   isFiring: 0
   shootingSecondary: 0
---- !u!60 &2179051198756814165
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5902798034218717826}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.81, y: 0.9}
-    newSize: {x: 0.95, y: 1.02}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.385, y: -0.39}
-      - {x: 0.405, y: -0.375}
-      - {x: 0.405, y: -0.35}
-      - {x: 0.39, y: -0.325}
-      - {x: 0.24, y: -0.105}
-      - {x: 0.205, y: -0.06}
-      - {x: 0.185, y: -0.06}
-      - {x: 0.185, y: 0.21499999}
-      - {x: 0.205, y: 0.22999999}
-      - {x: 0.22, y: 0.275}
-      - {x: 0.145, y: 0.405}
-      - {x: 0.114999995, y: 0.45}
-      - {x: -0.12, y: 0.45}
-      - {x: -0.17999999, y: 0.345}
-      - {x: -0.21499999, y: 0.275}
-      - {x: -0.21499999, y: 0.265}
-      - {x: -0.19999999, y: 0.22999999}
-      - {x: -0.185, y: 0.21499999}
-      - {x: -0.185, y: -0.06}
-      - {x: -0.21, y: -0.06}
-      - {x: -0.235, y: -0.085}
-      - {x: -0.405, y: -0.35}
-      - {x: -0.405, y: -0.375}
-      - {x: -0.39499998, y: -0.385}
-      - {x: -0.35999998, y: -0.39999998}
-      - {x: -0.35999998, y: -0.42999998}
-      - {x: -0.35, y: -0.44}
-      - {x: -0.25, y: -0.44}
-      - {x: -0.22999999, y: -0.45}
-      - {x: 0.22999999, y: -0.45}
-      - {x: 0.25, y: -0.44}
-      - {x: 0.35, y: -0.44}
-      - {x: 0.35999998, y: -0.42999998}
+  rocketsStacked: 0
 --- !u!1 &5902798034914817382
 GameObject:
   m_ObjectHideFlags: 0
